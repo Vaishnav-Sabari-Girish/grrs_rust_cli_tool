@@ -7,7 +7,13 @@ struct Cli {
 }
 
 fn main() {
-
     let arguments = Cli::parse();
-    print!("pattern: {:?}, path: {:?}", arguments.pattern, arguments.path);
+
+    let content = std::fs::read_to_string(&arguments.path).expect("Could not read file");
+
+    for line in content.lines() {
+        if line.contains(&arguments.pattern) {
+            println!("{}", line);
+        }
+    }
 }
