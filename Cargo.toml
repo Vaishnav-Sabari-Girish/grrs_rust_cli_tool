@@ -1,0 +1,6 @@
+[package]
+name = "rust_cli_tool_grrs"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
