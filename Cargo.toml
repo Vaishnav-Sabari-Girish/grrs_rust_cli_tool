@@ -2,6 +2,14 @@
 name = "rust_cli_tool_grrs"
 version = "0.1.0"
 edition = "2024"
+authors = ["Vaishnav Sabari Girish forgamesonly684@gmail.com"]
+license = "MIT"
+description = "A tool to read files"
+readme = "README.md"
+homepage = "https://github.com/Vaishnav-Sabari-Girish/grrs_rust_cli_tool"
+repository = "https://github.com/Vaishnav-Sabari-Girish/grrs_rust_cli_tool"
+keywords = ["cli", "search", 'demo']
+categories = ["command-line-utilities"]
 
 [[bin]]
 name = "grrs_vaishnav"
@@ -15,3 +23,4 @@ clap = { version = "4.5.40", features = ["derive"] }
 assert_cmd = "2.0.17"
 assert_fs = "1.1.3"
 predicates = "3.1.3"
+
