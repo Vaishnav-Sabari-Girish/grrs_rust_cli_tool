@@ -1,5 +1,7 @@
 use anyhow::{Context, Result};
 use clap::Parser;
+//eprintln() prints error messages i.e to stderr
+//println!() prints to stdout
 
 /// Search for a pattern in a file and display the lines that contain it.
 #[derive(Parser)]
@@ -10,17 +12,20 @@ struct Cli {
     path: std::path::PathBuf,
 }
 
+
 fn main() -> Result<()> {
     let args = Cli::parse();
 
     let content = std::fs::read_to_string(&args.path)
         .with_context(|| format!("could not read file `{}`", args.path.display()))?;
 
-    for line in content.lines() {
-        if line.contains(&args.pattern) {
-            println!("{}", line);
-        }
-    }
-
+    rust_cli_tool_grrs::find_matches(&content, &args.pattern, &mut std::io::stdout());
     Ok(())
+}
+
+#[test]
+fn find_a_match() {
+    let mut result = Vec::new();
+    rust_cli_tool_grrs::find_matches("lorem ipsum\ndolor si amet", "lorem", &mut result);
+    assert_eq!(result, b"lorem ipsum\n");
 }
